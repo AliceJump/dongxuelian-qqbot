@@ -23,7 +23,7 @@ function assertRetiredScript(relativePath) {
 
 // Verifies that repository documentation exposes only the immutable remote release path.
 function assertDocumentationContract() {
-  const readme = read('readme2.md')
+  const readme = read('README.md')
   const lessons = read('教训总结.md')
   const deploymentGuide = read('部署教程.txt')
   const documentation = [readme, lessons, deploymentGuide].join('\n')

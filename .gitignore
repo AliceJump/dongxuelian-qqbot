@@ -36,8 +36,17 @@ deploy-backups/
 *.log
 local-deployer/release/
 .claude/settings.local.json
-.opencode/plans/
-.cursor/rules/no-package-install.mdc
+
+# Personal editor and AI tool settings
+/.cursor/
+/.opencode/
+/.vscode/
+
+# Historical scratch files (archived locally under tmp/workspace/)
+/personas-api.txt
+/server-sidebar.txt
+/.deploy-current-code.remote.sh
+/Bug扫描方案.md
 
 # Local collaboration notes and private audit/deploy scratch docs
 AGENTS.md
