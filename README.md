@@ -189,6 +189,7 @@ AI API / Agent 工具 / 群工具 / Dashboard / 日报 / 视频 / 图集
 | 昵称与集合 | `packages/koishi-plugin-group-name-at/` | 昵称绑定、集合管理、集合运算、批量 at |
 | B 站视频发送 | `packages/koishi-plugin-local-video-sender/` | 自动识别 B 站链接，或用 `bvidl` 下载并发送视频 |
 | 群聊日报 | `packages/koishi-plugin-daily-report/` | 基础日报、详细日报、HTML 模板渲染、AI 分析 |
+| GitHub 链接查询 | `packages/koishi-plugin-dongxuelian-ai/src/github-preview/` | Issue / PR 标题至发起者首条正文截图，仓库 / 用户官方信息卡片；独立群白名单默认关闭 |
 | 退群提醒 | `packages/koishi-plugin-group-leave-notice/` | 监听成员退群事件并在群里提示 |
 | 戳一戳响应 | `packages/koishi-plugin-dongxuelian-poke/` | 调用 NapCat OneBot 扩展接口回戳 |
 | 对话防护 | `packages/koishi-plugin-defense/` | 拦截常见提示词套话、角色覆盖、格式控制类输入 |
@@ -289,6 +290,14 @@ Agent 面板还提供：
 | 戳一戳 | 收到戳一戳后通过 NapCat 回戳 |
 | 退群提醒 | 成员退群后群内提醒 |
 | 对话防护 | 拦截提示词注入、角色覆盖和格式操控 |
+
+### 杂项菜单：GitHub 链接查询
+
+发送“杂项功能”可查看入口。机器人指定管理员使用 `GitHub查询群添加 <群号>` 开启、`GitHub查询群删除 <群号>` 关闭，使用 `GitHub查询群查看` 查看配置；普通成员可用 `GitHub查询状态` 查看当前群。首次所有群关闭，配置独立保存在运行数据目录的 `github-preview-groups.json`，重启保留。
+
+开启群直接发送公开的 GitHub Issue、PR、仓库或用户根链接即可，无需艾特。Issue / PR 截图从标题上边缘到发起者第一条正文下边缘，包含状态、作者头像与 Labels，排除后续回复；四边默认各加 24 像素白边。每页导航、字体、目标图片和布局检查共用最多 25 秒加载预算，提前就绪提前截图，截图与排队时间另计。不完整页面会明确标注；错误页、超长正文或资源不足时返回官方字段文字信息。
+
+仓库 / 用户按官方描述与公开字段生成固定卡片，全流程不调用文字或绘图模型。每条消息最多 3 个链接，同群同目标冷却 120 秒；浏览器串行运行并与日报共用资源门控。可选环境变量 `GITHUB_PREVIEW_TOKEN` 仅用于官方接口额度，浏览器使用匿名页面，不向群输出私有仓库信息。
 
 ### pet-bridge 桌宠桥
 
